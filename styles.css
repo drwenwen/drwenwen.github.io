@@ -1,0 +1,353 @@
+/* ============================================================
+   Wen Wen — academic site
+   Design tokens
+   ============================================================ */
+:root{
+  --ink:        #14213D;   /* deep navy — masthead, headings */
+  --ink-soft:   #2B3B5C;
+  --paper:      #FBFAF7;   /* page background */
+  --paper-dim:  #F1EEE6;   /* card / section background */
+  --rule:       #DDD8CB;   /* hairline rule color */
+  --burnt:      #BF5700;   /* UT Austin burnt orange — institutional accent */
+  --burnt-dim:  #E9DCCF;
+  --teal:       #2D5C4B;   /* secondary accent for links & tags */
+  --text:       #262420;
+  --text-muted: #6B6558;
+
+  --serif: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --sans:  "IBM Plex Sans", -apple-system, "Segoe UI", sans-serif;
+  --mono:  "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --measure: 42rem;
+  --wide: 66rem;
+}
+
+*{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+
+body{
+  margin:0;
+  background: var(--paper);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a{ color: var(--teal); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover{ color: var(--burnt); }
+a:focus-visible, button:focus-visible{
+  outline: 2px solid var(--burnt);
+  outline-offset: 3px;
+}
+
+img{ max-width: 100%; display:block; }
+
+.wrap{
+  max-width: var(--wide);
+  margin: 0 auto;
+  padding: 0 1.75rem;
+}
+
+/* ---------------- Masthead / Nav ---------------- */
+.masthead{
+  background: var(--ink);
+  color: #EDEAE0;
+}
+.masthead .wrap{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding-top: 1.1rem;
+  padding-bottom: 1.1rem;
+}
+.brand{
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  letter-spacing: .01em;
+  color: #F6F3EA;
+  text-decoration: none;
+}
+.brand:hover{ color: var(--burnt); }
+.brand small{
+  display:block;
+  font-family: var(--mono);
+  font-size: .62rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: #B9AE93;
+  margin-top: .18rem;
+}
+nav.primary ul{
+  list-style:none;
+  display:flex;
+  gap: 1.75rem;
+  margin:0; padding:0;
+}
+nav.primary a{
+  font-family: var(--mono);
+  font-size: .78rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #D8D3C4;
+  text-decoration: none;
+  padding: .3rem 0;
+  border-bottom: 1px solid transparent;
+}
+nav.primary a:hover,
+nav.primary a[aria-current="page"]{
+  color: #F6F3EA;
+  border-bottom-color: var(--burnt);
+}
+.nav-toggle{
+  display:none;
+  background:none;
+  border: 1px solid #4A5A7A;
+  color:#EDEAE0;
+  border-radius: 4px;
+  padding: .35rem .6rem;
+  font-family: var(--mono);
+  font-size: .75rem;
+}
+
+/* ---------------- Hero ---------------- */
+.hero{
+  background: var(--ink);
+  color: #EDEAE0;
+  border-top: 1px solid #263457;
+  position: relative;
+}
+.hero .wrap{
+  padding-top: 3.4rem;
+  padding-bottom: 3.8rem;
+  display:grid;
+  grid-template-columns: 1.15fr auto;
+  gap: 3rem;
+  align-items:end;
+}
+.hero-eyebrow{
+  font-family: var(--mono);
+  font-size: .74rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--burnt);
+  margin: 0 0 1rem;
+}
+.hero h1{
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(2.6rem, 6vw, 4.4rem);
+  line-height: 1.02;
+  margin: 0 0 .9rem;
+  color: #FBFAF7;
+}
+.hero .role{
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.2rem;
+  color: #CFC9B7;
+  margin: 0 0 .3rem;
+  max-width: 34ch;
+}
+.hero .org{
+  font-size: .95rem;
+  color: #A9A38F;
+  margin: 0;
+}
+.hero-links{
+  display:flex;
+  flex-wrap:wrap;
+  gap: .6rem 1.2rem;
+  margin-top: 1.6rem;
+  font-family: var(--mono);
+  font-size: .82rem;
+}
+.hero-links a{ color: #E3DFCF; }
+.hero-links a:hover{ color: var(--burnt); }
+
+.portrait{
+  width: 168px;
+  height: 168px;
+  border-radius: 4px;
+  overflow:hidden;
+  border: 1px solid #3A4A6E;
+  box-shadow: 0 18px 40px -18px rgba(0,0,0,.6);
+  justify-self:end;
+}
+.portrait img{ width:100%; height:100%; object-fit:cover; }
+
+/* ---------------- Section shell ---------------- */
+section{ padding: 4rem 0; }
+section + section{ border-top: 1px solid var(--rule); }
+
+.section-head{
+  display:flex;
+  align-items:baseline;
+  gap: 1rem;
+  margin-bottom: 1.9rem;
+}
+.section-head .tag{
+  font-family: var(--mono);
+  font-size: .72rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--burnt);
+}
+.section-head h2{
+  font-family: var(--serif);
+  font-size: 1.7rem;
+  font-weight: 500;
+  margin: 0;
+  color: var(--ink);
+}
+.section-head .rule{
+  flex:1;
+  height:1px;
+  background: var(--rule);
+}
+
+.prose{ max-width: var(--measure); }
+.prose p{ margin: 0 0 1.15rem; color: var(--text); }
+.prose p:last-child{ margin-bottom:0; }
+
+/* ---------------- About / research-focus grid ---------------- */
+.focus-grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.4rem;
+  margin-top: 2.2rem;
+}
+.focus-card{
+  background: var(--paper-dim);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--burnt);
+  padding: 1.3rem 1.3rem 1.45rem;
+}
+.focus-card h3{
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  margin: 0 0 .55rem;
+  color: var(--ink);
+}
+.focus-card p{
+  margin:0;
+  font-size: .92rem;
+  color: var(--text-muted);
+}
+
+/* ---------------- Timeline (appointments / education) ---------------- */
+.timeline{ list-style:none; margin: 0; padding:0; max-width: var(--measure); }
+.timeline li{
+  display:grid;
+  grid-template-columns: 8.5rem 1fr;
+  gap: 1rem;
+  padding: .85rem 0;
+  border-top: 1px solid var(--rule);
+}
+.timeline li:first-child{ border-top:none; }
+.timeline .when{
+  font-family: var(--mono);
+  font-size: .8rem;
+  color: var(--text-muted);
+  padding-top: .15rem;
+}
+.timeline .what strong{ color: var(--ink); }
+.timeline .what span{
+  display:block;
+  font-size: .88rem;
+  color: var(--text-muted);
+}
+
+/* ---------------- Publications ---------------- */
+.pub-list{ list-style:none; margin:0; padding:0; }
+.pub{
+  display:grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap: 1.4rem;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--rule);
+}
+.pub:first-child{ border-top: none; padding-top: 0; }
+
+.pub-status{
+  font-family: var(--mono);
+  font-size: .68rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: .28rem .5rem;
+  border: 1px solid currentColor;
+  text-align:center;
+  align-self:start;
+  white-space: normal;
+}
+.pub-status.published{ color: var(--teal); }
+.pub-status.forthcoming{ color: var(--burnt); }
+.pub-status.rr{ color: #8A6D00; }
+.pub-status.wp{ color: var(--text-muted); }
+
+.pub h3{
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 1.12rem;
+  line-height: 1.35;
+  margin: 0 0 .4rem;
+  color: var(--ink);
+}
+.pub .coauthors{
+  font-size: .88rem;
+  color: var(--text-muted);
+  margin: 0 0 .3rem;
+  font-style: italic;
+}
+.pub .venue{
+  font-size: .88rem;
+  color: var(--text);
+  margin:0;
+}
+.pub .venue em{ color: var(--ink); font-style: normal; font-weight: 600; }
+
+/* ---------------- Footer ---------------- */
+footer{
+  background: var(--ink);
+  color: #A9A38F;
+  padding: 2.2rem 0;
+  font-size: .85rem;
+}
+footer .wrap{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap: .8rem;
+}
+footer a{ color: #D8D3C4; }
+footer a:hover{ color: var(--burnt); }
+
+/* ---------------- Responsive ---------------- */
+@media (max-width: 760px){
+  nav.primary{
+    position:absolute;
+    top: 100%; left:0; right:0;
+    background: var(--ink);
+    border-top: 1px solid #2A3A5C;
+    display:none;
+  }
+  nav.primary.open{ display:block; }
+  nav.primary ul{ flex-direction:column; gap:0; padding: .5rem 1.75rem 1rem; }
+  nav.primary a{ display:block; padding: .7rem 0; border-bottom: 1px solid #24345a; }
+  .nav-toggle{ display:inline-block; }
+  .masthead{ position:relative; }
+
+  .hero .wrap{ grid-template-columns: 1fr; }
+  .portrait{ justify-self:start; width:120px; height:120px; }
+
+  .focus-grid{ grid-template-columns: 1fr; }
+  .timeline li,
+  .pub{ grid-template-columns: 1fr; gap:.4rem; }
+  .pub-status{ justify-self:start; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior: auto; }
+}

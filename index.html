@@ -17,7 +17,7 @@
     <a class="brand" href="index.html">Wen Wen
       <small>McCombs School of Business &middot; UT Austin</small>
     </a>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+    <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="primary-nav">Menu</button>
     <nav class="primary" id="primary-nav">
       <ul>
         <li><a href="index.html" aria-current="page">About</a></li>
@@ -107,6 +107,29 @@
   </div>
 </footer>
 
-<script src="script.js"></script>
+<script>
+  // Mobile nav toggle
+  var toggle = document.querySelector('.nav-toggle');
+  var nav = document.getElementById('primary-nav');
+
+  if (toggle && nav) {
+    toggle.addEventListener('click', function () {
+      var isOpen = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    var navLinks = nav.querySelectorAll('a');
+    for (var i = 0; i < navLinks.length; i++) {
+      navLinks[i].addEventListener('click', function () {
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    }
+  }
+
+  // Footer year
+  var yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+</script>
 </body>
 </html>

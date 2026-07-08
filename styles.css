@@ -54,6 +54,8 @@ img{ max-width: 100%; display:block; }
 .masthead{
   background: var(--ink);
   color: #EDEAE0;
+  position: relative;
+  z-index: 100;
 }
 .masthead .wrap{
   display:flex;
@@ -336,12 +338,13 @@ footer a:hover{ color: var(--burnt); }
     background: var(--ink);
     border-top: 1px solid #2A3A5C;
     display:none;
+    z-index: 100;				 
   }
   nav.primary.open{ display:block; }
   nav.primary ul{ flex-direction:column; gap:0; padding: .5rem 1.75rem 1rem; }
   nav.primary a{ display:block; padding: .7rem 0; border-bottom: 1px solid #24345a; }
   .nav-toggle{ display:inline-block; }
-  .masthead{ position:relative; }
+
 
   .hero .wrap{ grid-template-columns: 1fr; }
   .portrait{ justify-self:start; width:120px; height:120px; }
